@@ -111,7 +111,3 @@ The first tile shows the number of carried out thefts per district and month.
 The second theft shows the average number of thefts per hour of the day.
 The third tile (pie chart) shows the share of the types of bikes stolen.
 
-## TODO
-
-- airflow tests
-- clean up make file
