@@ -1,0 +1,7 @@
+.env
+airflow/logs/
+.idea
+/terraform/.terraform.lock.hcl
+/terraform/.terraform/
+__pycache__
+.DS_Store

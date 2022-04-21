@@ -1,0 +1,22 @@
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/kristinanejdl/developer/DTC/dtc-de-course-339013-93f0a678cb0c.json"
+
+# todo get aws access key to run transfer_service.tf
+-> will transfer data from aws to GCP
+
+
+# todo airflow docker compose not using env file
+GCP_PORJECT_ID: ''
+GCP_GCS_BUCKET: 'dtc_data_lake_project'
+
+
+# todo look at dag which uploads to postgres
+
+
+https://nyc-tlc.s3.amazonaws.com/trip+data/fhv_tripdata_2021-01.csv
+https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
+
+
+put in gcp variables in docker compose
+
+variables.tf
+default = "dtc-de-course-339013"
