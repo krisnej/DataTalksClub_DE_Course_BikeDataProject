@@ -1,5 +1,4 @@
 .env
-airflow/logs/
 .idea
 /terraform/.terraform.lock.hcl
 /terraform/.terraform/
