@@ -59,7 +59,7 @@ instructions to set up a dbt project. Then deploy a dbt job to transform the dat
 The final Data Studio dashboard can be found [here](https://datastudio.google.com/u/2/reporting/4b982c64-0df8-417a-8ba9-67f5ee78f065/page/ligqC) 
 (access request required, but project might be shut down already) or a screenshot [here](berlin_bike_data_dashboard.pdf).
 
-##Project Description
+## Project Description
 ### 1. Data Ingestion
 **Data Source:**
 The dataset consists of three files: the bike theft data itself, and two files giving additional information on the locations (LORs and districts, 

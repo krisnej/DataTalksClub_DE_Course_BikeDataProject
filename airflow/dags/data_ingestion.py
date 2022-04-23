@@ -1,12 +1,6 @@
-import os
-from datetime import datetime
-
 from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.bash import BashOperator
-
-PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
-DATA_BUCKET = os.environ["GCS_BUCKET"] + "/data"
 
 default_args = {
     "owner": "airflow",
@@ -47,7 +41,7 @@ BIKE_CSV_FILE = 'berlin_bike_data.csv'
 bike_data_dag = DAG(
     dag_id="bike_data_dag",
     schedule_interval="0 6 * * *",
-    start_date=datetime(2022, 3, 1),
+    start_date=days_ago(1),
     default_args=default_args,
     catchup=False,
     max_active_runs=3,
@@ -74,7 +68,7 @@ LOR_CSV_FILE = '/berlin_lor_data.csv'
 lor_data_dag = DAG(
     dag_id="lor_data_dag",
     schedule_interval="0 6 * * *",
-    start_date=datetime(2022, 3, 1),
+    start_date=days_ago(1),
     default_args=default_args,
     catchup=False,
     max_active_runs=3,
@@ -100,7 +94,7 @@ DISTRICTS_CSV_FILE = '/berlin_districts_data.csv'
 districs_data_dag = DAG(
     dag_id="districs_data_dag",
     schedule_interval="@once",
-    start_date=datetime(2022, 3, 1),
+    start_date=days_ago(1),
     default_args=default_args,
     catchup=False,
     max_active_runs=3,
