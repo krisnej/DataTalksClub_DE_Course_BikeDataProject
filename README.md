@@ -60,7 +60,7 @@ The final Data Studio dashboard can be found [here](https://datastudio.google.co
 (access request required, but project might be shut down already) or a screenshot [here](berlin_bike_data_dashboard.pdf).
 
 ##Project Description
-###1. Data Ingestion
+### 1. Data Ingestion
 **Data Source:**
 The dataset consists of three files: the bike theft data itself, and two files giving additional information on the locations (LORs and districts, 
 (see description of data in [data_ingestion.py](airflow/dags/data_ingestion.py))).
@@ -86,13 +86,13 @@ from an url directly into the Composer's data directory. From there, it can be a
 and writes it to a table in BigQuery, using a specified schema. The data is left as it is, as
 this allows us to keep the raw data in the data warehouse, and transform it afterwards using dbt.
 
-###2. Data Warehouse
+### 2. Data Warehouse
 We're using BigQuery as a Data Warehouse in Google Cloud Platform. The terraform scripts run in the 
 setup step of this project already created the necessary dataset, called `berlin_bike_dataset`.
 
 In this database, we store all our raw and transformed data, which we can then use for analytics and visualisations.
 
-###3. Transformations using dbt
+### 3. Transformations using dbt
 
 The dbt repository for the data transformations can be found [here](https://github.com/krisnej/dtc-de-project-dbt).
 
@@ -106,7 +106,7 @@ by district, the other focusing on the aggregation by hour of the day.
 These models join the information on the LOR with the district names, as they are more 
 informative on a higher level.
 
-###4. Dashboard
+### 4. Dashboard
 
 A pdf of the resulting dashboard can be found [here](berlin_bike_data_dashboard.pdf).
 
