@@ -1,4 +1,4 @@
-# DataTalk Course on Data Engineering
+## DataTalk Course on Data Engineering
 # Final Project - Berlin Bike Thefts Data
 
 ## Problem description
@@ -17,12 +17,12 @@ and combined with additional data to get more useful information on the location
 A second iteration could aim at persisting data in the data warehouse that is not in the police's file anymore 
 (i.e. data which is older than the previous year).
 
-## Technical Description
+## Overview
 
-1. Data ingestion - Airflow to download the dataset and place it in a GCP bucket
-2. Data warehouse - Host db tables on BigQuery, setup BQ using terraform
-3. Transformations - Use dbt to transform the data to a suitable schema and store in BigQuery efficiently (partitioned and clustered)
-4. Dashboard - Build a dashboard in Google Data studio to visualize the results
+1. [Data ingestion](#data-ingestion) - Airflow to download the dataset and place it in a GCP bucket
+2. [Data warehouse](#data-warehouse) - Host db tables on BigQuery, setup BQ using terraform
+3. [Transformations](#transformations-using-dbt) - Use dbt to transform the data to a suitable schema and store in BigQuery efficiently (partitioned and clustered)
+4. [Dashboard](#dashboard) - Build a dashboard in Google Data studio to visualize the results
 
 ## Set up Infrastructure using Terraform
 
@@ -59,8 +59,8 @@ instructions to set up a dbt project. Then deploy a dbt job to transform the dat
 The final Data Studio dashboard can be found [here](https://datastudio.google.com/u/2/reporting/4b982c64-0df8-417a-8ba9-67f5ee78f065/page/ligqC) 
 (access request required, but project might be shut down already) or a screenshot [here](berlin_bike_data_dashboard.pdf).
 
-## Project Description
-### 1. Data Ingestion
+##Project Description
+###Data Ingestion
 **Data Source:**
 The dataset consists of three files: the bike theft data itself, and two files giving additional information on the locations (LORs and districts, 
 (see description of data in [data_ingestion.py](airflow/dags/data_ingestion.py))).
@@ -86,13 +86,13 @@ from an url directly into the Composer's data directory. From there, it can be a
 and writes it to a table in BigQuery, using a specified schema. The data is left as it is, as
 this allows us to keep the raw data in the data warehouse, and transform it afterwards using dbt.
 
-### 2. Data Warehouse
+###Data Warehouse
 We're using BigQuery as a Data Warehouse in Google Cloud Platform. The terraform scripts run in the 
 setup step of this project already created the necessary dataset, called `berlin_bike_dataset`.
 
 In this database, we store all our raw and transformed data, which we can then use for analytics and visualisations.
 
-### 3. Transformations using dbt
+###Transformations using dbt
 
 The dbt repository for the data transformations can be found [here](https://github.com/krisnej/dtc-de-project-dbt).
 
@@ -106,7 +106,7 @@ by district, the other focusing on the aggregation by hour of the day.
 These models join the information on the LOR with the district names, as they are more 
 informative on a higher level.
 
-### 4. Dashboards
+###Dashboard
 
 A pdf of the resulting dashboard can be found [here](berlin_bike_data_dashboard.pdf).
 
