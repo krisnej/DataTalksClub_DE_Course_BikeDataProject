@@ -2,14 +2,6 @@ variable "project" {
   description = "input project ID"
 }
 
-variable "access_key_id" {
-  description = "AWS access key for transfer service"
-}
-
-variable "aws_secret_key" {
-  description = "AWS secret for transfer service"
-}
-
 variable "region" {
   description = "Region for GCP resources. Choose as per your location: https://cloud.google.com/about/locations"
   default = "europe-west6"

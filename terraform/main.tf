@@ -29,7 +29,7 @@ resource "google_composer_environment" "cloud_composer" {
   region = "europe-west6"
   config {
     software_config {
-      image_version = "composer-2-airflow-2"
+      image_version = "composer-2.0.1-airflow-2.1.4"
     }
   }
 }

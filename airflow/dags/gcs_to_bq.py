@@ -9,6 +9,7 @@ DATA_BUCKET = os.environ["GCS_BUCKET"] + "/data"
 BIKE_GCS_FILES = "berlin_bike_data.csv"
 LOR_GCS_FILES = "berlin_lor_data.csv"
 DISTRICTS_GCS_FILES = "berlin_districts_data.csv"
+DATASET = 'berlin_bike_data'
 
 default_args = {
     "owner": "airflow",
@@ -30,7 +31,7 @@ with DAG(
         task_id='bike_gcs_to_bq',
         bucket=DATA_BUCKET,
         source_objects=[BIKE_GCS_FILES],
-        destination_project_dataset_table='project.berlin_bike_data',
+        destination_project_dataset_table=f'{DATASET}.berlin_bike_data',
         schema_fields=[
             {'name': 'created_at', 'type': 'STRING', 'mode': 'NULLABLE'},
             {'name': 'time_of_crime_start_day', 'type': 'STRING', 'mode': 'NULLABLE'},
@@ -65,7 +66,7 @@ with DAG(
         task_id='lor_gcs_to_bq',
         bucket=DATA_BUCKET,
         source_objects=[LOR_GCS_FILES],
-        destination_project_dataset_table='project.berlin_lor_data',
+        destination_project_dataset_table=f'{DATASET}.berlin_lor_data',
         schema_fields=[
             {'name': 'PLR_ID', 'type': 'INTEGER', 'mode': 'NULLABLE'},
             {'name': 'PLR_NAME', 'type': 'STRING', 'mode': 'NULLABLE'},
@@ -94,7 +95,7 @@ with DAG(
         task_id='districts_gcs_to_bq',
         bucket=DATA_BUCKET,
         source_objects=[DISTRICTS_GCS_FILES],
-        destination_project_dataset_table='project.berlin_districts_data',
+        destination_project_dataset_table=f'{DATASET}.berlin_districts_data',
         schema_fields=[
             {'name': 'gml_id', 'type': 'STRING', 'mode': 'NULLABLE'},
             {'name': 'Gemeinde_name', 'type': 'STRING', 'mode': 'NULLABLE'},
